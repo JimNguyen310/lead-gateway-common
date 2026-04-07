@@ -7,7 +7,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>comon-core</artifactId>
+    <artifactId>common-core</artifactId>
     <description>Core classes, DTOs, Exceptions, and Utilities (No Spring Dependencies)</description>
 
     <dependencies>

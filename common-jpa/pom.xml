@@ -14,8 +14,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>fec.digiflow</groupId>
-            <artifactId>digiflow-common-core</artifactId>
+            <groupId>ds.leadgateway</groupId>
+            <artifactId>common-core</artifactId>
         </dependency>
 
         <dependency>
