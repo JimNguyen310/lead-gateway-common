@@ -19,6 +19,8 @@
     <modules>
         <module>common-core</module>
         <module>common-jpa</module>
+        <module>common-security</module>
+        <module>common-web</module>
     </modules>
 
     <properties>
@@ -31,6 +33,11 @@
             <dependency>
                 <groupId>ds.leadgateway</groupId>
                 <artifactId>common-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ds.leadgateway</groupId>
+                <artifactId>common-web</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>

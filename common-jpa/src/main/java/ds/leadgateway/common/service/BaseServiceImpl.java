@@ -1,7 +1,7 @@
 package ds.leadgateway.common.service;
 
 import ds.leadgateway.common.dto.PagedResponse;
-import jakarta.persistence.EntityNotFoundException;
+import ds.leadgateway.common.exception.ResourceNotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -31,7 +31,7 @@ public abstract class BaseServiceImpl<E, D, ID> implements BaseService<D, ID> {
     @Transactional
     public D update(ID id, D dto) {
         E existingEntity = repository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("ID not found: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Entity", id));
 
         mapper.updateEntityFromDto(dto, existingEntity);
 
@@ -43,7 +43,7 @@ public abstract class BaseServiceImpl<E, D, ID> implements BaseService<D, ID> {
     @Transactional(readOnly = true)
     public D findById(ID id) {
         E entity = repository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("ID not found: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Entity", id));
         return mapper.toDto(entity);
     }
 
@@ -74,7 +74,7 @@ public abstract class BaseServiceImpl<E, D, ID> implements BaseService<D, ID> {
     @Transactional
     public void deleteById(ID id) {
         if (!repository.existsById(id)) {
-            throw new EntityNotFoundException("ID not found: " + id);
+            throw new ResourceNotFoundException("Entity", id);
         }
         repository.deleteById(id);
     }
